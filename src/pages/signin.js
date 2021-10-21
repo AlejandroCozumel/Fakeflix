@@ -45,7 +45,7 @@ export default function Signin() {
 
           <Form.Base onSubmit={handleSignin} method="POST">
             <Form.Input
-            type="email"
+              type="email"
               placeholder="Email address"
               value={emailAddress}
               onChange={({ target }) => setEmailAddress(target.value)}
