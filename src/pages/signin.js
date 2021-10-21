@@ -24,16 +24,16 @@ export default function Signin() {
       .auth()
       .signInWithEmailAndPassword(emailAddress, password)
       .then(() => {
-        setEmailAddress("");
-        setPassword("");
-        setError("");
         history.push(ROUTES.BROWSE);
       })
-      .catch((error) => setError(error.message));
-      setLoading(false);
-    setTimeout(() => {
-      setError("");
-    }, 3000);
+      .catch((error) => {
+        setTimeout(() => {
+          setEmailAddress("");
+          setPassword("");
+          setError(error.message);
+          setLoading(false);
+        }, 3000);
+      });
   };
 
   return (
@@ -45,6 +45,7 @@ export default function Signin() {
 
           <Form.Base onSubmit={handleSignin} method="POST">
             <Form.Input
+            type="email"
               placeholder="Email address"
               value={emailAddress}
               onChange={({ target }) => setEmailAddress(target.value)}
